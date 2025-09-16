@@ -1,0 +1,113 @@
+.footer {
+  background-color: #0d0d0d;
+  color: #fff;
+  padding: 60px 20px 30px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-section h4 {
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+  color: #aaa;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+  color: #df2f2f;
+  text-decoration: underline;
+}
+
+.footer-section.subscribe input[type="email"] {
+  padding: 10px;
+  width: 92%;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 6px;
+  outline: none;
+}
+
+.footer-section.subscribe button {
+  padding: 10px;
+  width: 98%;
+  background-color: #df2f2f;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.footer-section.subscribe button:hover {
+  background-color: #b02020;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(223, 47, 47, 0.4);
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.social-icons a {
+  color: #aaa;
+  font-size: 20px;
+  transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #df2f2f;
+  transform: scale(1.1);
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 50px;
+  border-top: 1px solid #333;
+  padding-top: 20px;
+  font-size: 14px;
+  color: #777;
+  background-color: #000;
+}
+
+/* ---------- RESPONSIVENESS ---------- */
+@media (max-width: 768px) {
+  .footer-container {
+    text-align: center;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+
+  .footer-section.subscribe input[type="email"],
+  .footer-section.subscribe button {
+    width: 92%;
+  }
+}

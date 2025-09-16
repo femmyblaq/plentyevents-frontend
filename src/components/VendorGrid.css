@@ -1,0 +1,29 @@
+.VendorGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  padding: 4rem 2rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  opacity: 0.18;
+  animation: floatGrid 6s ease-in-out infinite;
+  overflow: hidden;
+  pointer-events: none; /* Let clicks go through to hero/buttons */
+}
+
+@keyframes floatGrid {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0); }
+}
+
+/* ✅ Hide VendorGrid on tablets & mobile */
+@media (max-width: 1024px) {
+  .VendorGrid {
+    display: none;
+  }
+}

@@ -1,0 +1,40 @@
+/* .hero-overlay {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: rgba(0, 0, 0, 0.8);
+}
+.hero-overlay h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #ccc;
+}
+.highlight {
+  color: #ff4081;
+}
+.hero-overlay p {
+  max-width: 600px;
+  margin: 1rem auto;
+  color: #ccc;
+}
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.btn.dark {
+  background: black;
+  color: white;
+  padding: 10px 20px;
+  border: 2px solid white;
+  border-radius: 20px;
+}
+.btn.light {
+  background: white;
+  color: black;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+}
+
+ */

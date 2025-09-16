@@ -1,0 +1,104 @@
+/* .account-wrapper {
+  display: grid;
+  grid-template-columns: 40% 60%;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #000;
+}
+
+.account-image-side {
+  background-image: linear-gradient(to right, rgba(0,0,0,0.7), rgba(0,0,0,0.6)), url("../images/iam.jpeg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  padding: 2rem;
+}
+
+.image-overlay-text {
+  max-width: 80%;
+  text-align: center;
+}
+
+.signup-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem 4rem;
+  max-width: 500px;
+  width: 100%;
+  margin: auto;
+}
+
+.signup-form input {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  background-color: #1a1a1a;
+  border: none;
+  border-radius: 6px;
+  color: white;
+}
+
+.signup-btn {
+  width: 100%;
+  padding: 0.8rem;
+  margin-top: 1rem;
+  background-color: hotpink;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+}
+
+.separator {
+  text-align: center;
+  margin: 1.5rem 0;
+  color: #aaa;
+}
+
+.social-signup button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.google-btn {
+  background: white;
+  color: #000;
+}
+
+.apple-btn {
+  background: #1a1a1a;
+  color: white;
+}
+
+.login-link {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+  .account-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .account-image-side {
+    display: none;
+  }
+
+  .signup-container {
+    padding: 2rem;
+    max-width: 100%;
+  }
+} */
