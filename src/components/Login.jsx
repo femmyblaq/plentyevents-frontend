@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { FaApple } from "react-icons/fa";
@@ -7,6 +7,9 @@ import iamImg from "../images/tunde.jpg";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import api from "../api/axios.js"
+import { AuthContext } from "../store/AuthContext.jsx";
+import NotificationModal from "../components/modal/NotificationModal.jsx";
+
 const Login = () => {
   const navigate = useNavigate();
   useEffect(() => {
@@ -17,65 +20,68 @@ const Login = () => {
     email: "",
     password: "",
   });
+  const {login} =useContext(AuthContext);
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false); // <-- Add this
+  const [showNotification, setShowNotification] = useState(false);
+  const [notificationMsg, setNotificationMsg] = useState("");
+  const [notificationType, setNotificationType] = useState("success");
+  const [notificationDuration, setNotificationDuration] = useState(2000);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     setError("");
-    // || !formData.role
+    setLoading(true);
+
     if (!formData.email || !formData.password) {
       setError("Please fill in all fields and select a role.");
+      setNotificationMsg("Please fill in all fields and select a role.");
+      setNotificationType("error");
+      setNotificationDuration(2000);
+      setShowNotification(true);
+      setLoading(false);
       return;
     }
 
+    const startTime = Date.now();
     try {
-      const res = api.post("/vendors/auth/login", formData);
-      console.log(res.data);
+      const res = await api.post("/vendors/auth/login", formData);
       setMessage("Login successful");
-
+      setLoading(false);
       if(res.data.token){
-        localStorage.setItem("token", res.data.token);
+        login(res.data.token);
+        setNotificationMsg("Login successful! Redirecting...");
+        setNotificationType("success");
+        // Calculate duration based on how long login took (min 1200ms, max 3000ms)
+        const elapsed = Date.now() - startTime;
+        const duration = Math.max(1200, Math.min(elapsed + 800, 3000));
+        setNotificationDuration(duration);
+        setShowNotification(true);
+        setTimeout(() => {
+          setShowNotification(false);
+          navigate("/vendor-dashboard");
+        }, duration);
       }
-      navigate("/vendor-dashboard");
-
-    } catch (err) {
-      setLoading(false); // <-- Stop loading
-            if (error.response) {
-                setMessage(error.response.data.message || "Registration failed");
-                setError(error.response.data.message || "Registration failed");
-            } else {
-                setMessage("Network error, please try again.");
-                setError("Network error, please try again.");
-            }
+    } catch (error) {
+      setLoading(false);
+      let msg = "Network error, please try again.";
+      if (error.response) {
+        msg = error.response.data.message || "Login failed";
+      }
+      setMessage(msg);
+      setError(msg);
+      setNotificationMsg(msg);
+      setNotificationType("error");
+      setNotificationDuration(2200);
+      setShowNotification(true);
+      setTimeout(() => setShowNotification(false), 2200);
     }
-
-    // 🔑 Get stored user from localStorage
-    // const storedUser = JSON.parse(localStorage.getItem("user"));
-
-    // if (
-    //   storedUser &&
-    //   storedUser.email === formData.email &&
-    //   storedUser.password === formData.password &&
-    //   storedUser.role === formData.role
-    // ) {
-    //   // ✅ Login success
-    //   localStorage.setItem("user", JSON.stringify(storedUser));
-
-    //   if (formData.role === "vendor") {
-    //     navigate("/vendor-dashboard");
-    //   } else {
-    //     navigate("/worker-dashboard");
-    //   }
-    // } else {
-    //   setError("Invalid email, password, or role. Please try again.");
-    // }
   };
 
   return (
@@ -99,7 +105,7 @@ const Login = () => {
               />
             </div>
 
-            <div className="input-group role-select">
+            {/* <div className="input-group role-select">
               <label>
                 <input
                   type="radio"
@@ -121,7 +127,7 @@ const Login = () => {
                 />
                 Worker
               </label>
-            </div>
+            </div> */}
 
             <div className="input-group" style={{ position: "relative" }}>
               <input
@@ -194,6 +200,14 @@ const Login = () => {
           <p>Connect to manage your vendor profile and grow your network.</p>
         </div>
       </div>
+
+      <NotificationModal
+        open={showNotification}
+        message={notificationMsg}
+        duration={notificationDuration}
+        type={notificationType}
+        onClose={() => setShowNotification(false)}
+      />
     </div>
   );
 };

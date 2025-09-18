@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import "./VendorDashboard.css";
+import { AuthContext } from "../store/AuthContext.jsx";
+import ConfirmModal from "./modal/ConfirmModal.jsx";
 
 const DashboardHome = ({ savedPicks, bookings, openPickDetail }) => (
   <div className="page-panel" data-aos="fade-up">
@@ -14,12 +16,10 @@ const DashboardHome = ({ savedPicks, bookings, openPickDetail }) => (
         <strong>34</strong>
         <span>Available Waiters</span>
       </div>
-
       <div className="card">
         <strong>{bookings.length}</strong>
         <span>Active Bookings</span>
       </div>
-
       <div
         className={`card clickable ${savedPicks.length === 0 ? "empty" : ""}`}
         onClick={() => savedPicks.length && openPickDetail(savedPicks[0])}
@@ -252,12 +252,13 @@ export default function VendorDashboard() {
   const updateBookingStatus = (id, status) => setBookings(b => b.map(x => x.id === id ? { ...x, status } : x));
 
   const saveProfile = (data) => setProfile(data);
+const {logout} = useContext(AuthContext);
 
-  const logout = () => {
-    if (window.confirm("Are you sure you want to log out?")) {
-      localStorage.removeItem("user");
+  const handleLogout = () => {
+    logout();
+    
       navigate("/");
-    }
+    
   };
 
   // Close mobile detail panel
@@ -278,7 +279,7 @@ export default function VendorDashboard() {
             <li className={active === "waiters" ? "active" : ""}><button onClick={() => openTab("waiters")}>Waiters</button></li>
             <li className={active === "bookings" ? "active" : ""}><button onClick={() => openTab("bookings")}>Bookings</button></li>
             <li className={active === "profile" ? "active" : ""}><button onClick={() => openTab("profile")}>Profile</button></li>
-            <li><button onClick={logout} className="logout-link">Log out</button></li>
+            <li><button onClick={handleLogout} className="logout-link">Log out</button></li>
           </ul>
         </nav>
       </aside>
