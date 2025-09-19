@@ -106,10 +106,11 @@ function App() {
       <Route path="/vendor-register" element={<VendorRegister />} />
 
       // New Dashboard Route
-       <Route path="/dashboard" element={<Dashboard >
-        <Route index element={<Overview />} />
-          <Route path="/dashboard/profile" element={<Profile />} />
-       </Dashboard>} />
+       <Route path="/dashboard" element={<Dashboard />}>
+        <Route index element={<Overview />} ></Route>
+        <Route path="overview" element={<Overview />} ></Route>
+          <Route path="profile" element={<Profile />}></Route>
+       </Route>
 
 
 

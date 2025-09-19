@@ -4,20 +4,17 @@ import Sidebar from './Sidebar'
 import Header from './Header'
 import { Link, NavLink } from 'react-router-dom'
 import { Outlet } from 'react-router-dom'
-// import FundTransfer from './FundTransfer'
-// import Overview from './Overview'
 export default function Dashboard() {
   return (
     <div>
       <Sidebar />
       <main className={style.Main}>
         <Header />
-        <div style={{ padding: '20px' }}>
+        <div style={{ padding: '20px' }} className="bg-warning h-100 text-white" >
 
           <Outlet />
         </div>
 
-        {/* <FundTransfer/> */}
         <div className={style.footerBar}>
           <div className={style.navlinks}>
             <ul style={{listStyle: 'none', display: 'flex', justifyContent: 'space-between', fontSize: '1.2rem'}}>

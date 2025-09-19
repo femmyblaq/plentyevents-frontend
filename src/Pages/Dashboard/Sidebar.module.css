@@ -6,7 +6,8 @@
     background-color: #121212;
 }
 .Sidebar .navbrand {
-    background-color: #eaeaea;
+    /* background-color: #121212; */
+    background-color: #333;
     padding: 0 20px;
     display: flex;
     align-items: center;
@@ -20,6 +21,7 @@
 
 .Sidebar .navlinks li {
     padding: 5px 30px;
+    list-style: none;
 }
 
 .Sidebar .navlinks li.active {
