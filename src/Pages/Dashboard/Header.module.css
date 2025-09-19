@@ -1,0 +1,45 @@
+.Header {
+    background-color: #f8f7f7;
+    padding: 0 20px;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    box-shadow: 0 3px 5px #ccc;
+}
+
+.Header div {
+    padding: 5px;
+    background-color: #000;
+    color: #fff;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+.Header .profile {
+    position: absolute;
+    background-color: #f3f1f1;
+    right: 30px;
+    top: 40px;
+    list-style: none;
+    border-radius: 5px;
+    box-shadow: 3px 2px 5px #e6e6e6;
+    /* display: none; */
+}
+.Header .profile li {
+    padding: 5px 10px;
+}
+.Header .profile li:hover {
+    background: #e6e6e6;
+    color: #fff;
+}
+.Header .profile li a {
+    text-decoration: none;
+    color: #000;
+}
+
+@media (min-width: 320px) and (max-width: 440px) {
+    .Header{
+        height: 50px;}
+}

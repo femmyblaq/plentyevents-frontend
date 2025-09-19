@@ -158,13 +158,13 @@ const Login = () => {
               </button>
             </div>
 
-            <div className="remember-forgot">
+            <div className="remember-forgot d-flex justify-content-between align-items-center">
               <label>
                 <input type="checkbox" /> Remember me
               </label>
-              <a href="#" className="forgot">
+              <Link to="/forget-password" className="forgot">
                 Forgot Password?
-              </a>
+              </Link>
             </div>
 
             <button type="submit" className="auth-btn">

@@ -4,7 +4,7 @@ import { FcGoogle } from "react-icons/fc";
 import { FaApple } from "react-icons/fa";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import "./Auth.css";
+import "../components/Auth.css";
 import vendorImg from "../images/iam.jpeg"; // swap with vendor-specific image
 
 const VendorRegister = () => {

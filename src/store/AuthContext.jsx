@@ -5,7 +5,6 @@ export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(null);
-
   // Load token on app start
   useEffect(() => {
     const savedToken = localStorage.getItem("token");

@@ -22,9 +22,10 @@ import TermsAndConditions from "./components/TermsAndConditions";
 //Registration Pages
 import CreateAccount from "./components/CreateAccount";
 import Login from "./components/Login";
+import ForgetPassword from "./Pages/ForgetPassword.jsx";
 
 //Dashboard(Vendor)
-import VendorDashboard from "./components/VendorDashboard";
+import VendorDashboard from "./Pages/VendorDashboard";
 // import DashboardHome from "./components/dashboard/DashboardHome";
 // import Waiters from "./components/dashboard/Waiters";
 // import Listings from "./components/dashboard/Listings";
@@ -32,18 +33,27 @@ import VendorDashboard from "./components/VendorDashboard";
 // import CreateListing from "./components/dashboard/CreateListing";
 // import Bookings from "./components/dashboard/Bookings";
 
+//New Dashboard
+import Dashboard from './Pages/Dashboard/Dashboard'
+import Overview from './Pages/Dashboard/Overview'
+import Profile from './Pages/Dashboard/Profile'
+
 //Others
 import RegisterChoice from "./components/RegisterChoice";
-import WorkerDashboard from "./components/WorkerDashboard";
-import VendorRegister from "./components/VendorRegister";
+import WorkerDashboard from "./Pages/WorkerDashboard";
+import VendorRegister from "./Pages/VendorRegister";
 import RegisterTwo from "./components/RegisterTwo"
-
+import { AuthContext } from "./store/AuthContext.jsx";
 // Protect dashboards
-const ProtectedRoute = ({ children, role }) => {
-  const user = JSON.parse(localStorage.getItem("user"));
-  if (!user || user.role !== role) {
+const ProtectedRoute = ({ children }) => {
+  const { isAuthenticated } = React.useContext(AuthContext);
+  if (!isAuthenticated) {
     return <Navigate to="/login" replace />;
   }
+  // const user = JSON.parse(localStorage.getItem("user"));
+  // if (!user || user.role !== role) {
+  //   return <Navigate to="/login" replace />;
+  // }
   return children;
 };
 
@@ -94,14 +104,20 @@ function App() {
       <Route path="/" element={<HomePage />} />
       <Route path="/create-account" element={<CreateAccount />} />
       <Route path="/vendor-register" element={<VendorRegister />} />
-      {/* <Route path="/dashboard" element={<DashboardHome />} />
-        <Route path="/dashboard/listings" element={<Listings />} />
-        <Route path="/dashboard/create-listing" element={<CreateListing />} />
-        <Route path="/dashboard/profile" element={<Profile />} />
-        <Route path="/dashboard/bookings" element={<Bookings />} />
-        <Route path="/dashboard/waiters" element={<Waiters />} /> */}
+
+      // New Dashboard Route
+       <Route path="/dashboard" element={<Dashboard >
+        <Route index element={<Overview />} />
+          <Route path="/dashboard/profile" element={<Profile />} />
+       </Dashboard>} />
+
+
+
+
+
       <Route path="/register" element={<RegisterChoice />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/forget-password" element={<ForgetPassword />} />
       <Route path="/about" element={<About />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/services" element={<Services />} />
@@ -111,12 +127,15 @@ function App() {
       <Route path="/privacy-policy" element={<PrivacyPolicy />} />
       <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
       <Route path="/register-two" element={<RegisterTwo />} />
+      
+      
+      
 
       {/* ✅ Protected dashboards */}
       <Route
         path="/vendor-dashboard"
         element={
-          <ProtectedRoute role="vendor">
+          <ProtectedRoute isAuthenticated={true}>
             <VendorDashboard />
           </ProtectedRoute>
         }
@@ -124,7 +143,7 @@ function App() {
       <Route
         path="/worker-dashboard"
         element={
-          <ProtectedRoute role="worker">
+          <ProtectedRoute isAuthenticated={true}>
             <WorkerDashboard />
           </ProtectedRoute>
         }

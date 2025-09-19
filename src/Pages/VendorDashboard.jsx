@@ -4,7 +4,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import "./VendorDashboard.css";
 import { AuthContext } from "../store/AuthContext.jsx";
-import ConfirmModal from "./modal/ConfirmModal.jsx";
+import ConfirmModal from "../components/modal/ConfirmModal.jsx";
 
 const DashboardHome = ({ savedPicks, bookings, openPickDetail }) => (
   <div className="page-panel" data-aos="fade-up">
@@ -253,12 +253,17 @@ export default function VendorDashboard() {
 
   const saveProfile = (data) => setProfile(data);
 const {logout} = useContext(AuthContext);
-
-  const handleLogout = () => {
+const [showConfirmLogout, setShowConfirmLogout] = useState(false);
+  const handleLogoutConfirm = () => {
     logout();
+    setShowConfirmLogout(false);
+      // navigate("/");
     
-      navigate("/");
-    
+  };
+  const handleLogoutCancel = () => setShowConfirmLogout(false);
+  
+  const handleLogout = () => {
+    setShowConfirmLogout(true);
   };
 
   // Close mobile detail panel
@@ -266,6 +271,12 @@ const {logout} = useContext(AuthContext);
 
   return (
     <div className="vendor-dashboard">
+      <ConfirmModal
+        open={showConfirmLogout}
+        message="Are you sure you want to log out?"
+        onConfirm={handleLogoutConfirm}
+        onCancel={handleLogoutCancel}
+      />
       {/* Sidebar */}
       <aside className={`sidebar ${isOpen ? "open" : ""}`}>
         <div className="sidebar-top">

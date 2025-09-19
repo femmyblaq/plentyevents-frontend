@@ -1,0 +1,64 @@
+.Sidebar {
+    width: 23%;
+    height: 100vh;
+    position: fixed;
+    box-shadow: 3px 0 5px #ccc;
+    background-color: #121212;
+}
+.Sidebar .navbrand {
+    background-color: #eaeaea;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    height: 40px;
+}
+
+.Sidebar .navlinks a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.Sidebar .navlinks li {
+    padding: 5px 30px;
+}
+
+.Sidebar .navlinks li.active {
+    background: linear-gradient(90deg, #ff6a00, #ee0979);
+}
+.Sidebar .navlinks li.active a {
+    color: #fff;
+}
+
+.Sidebar .navbrand h3, .Sidebar .footer i {
+    background: linear-gradient(90deg, #ff6a00, #ee0979);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: "Cal Sans", sans-serif;
+}
+
+.Sidebar .footer {
+    background-color: #eaeaea;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+
+
+.collapse {
+    width: 50px !important;
+}
+ ul.remove {
+    display: none !important;
+}
+
+@media (min-width: 320px) and (max-width: 440px) {
+    .Sidebar {
+        display: none;
+    }
+}
