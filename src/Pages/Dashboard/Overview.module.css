@@ -1,0 +1,6 @@
+.overview h2 {
+    background: linear-gradient(90deg, #93e704, #1d7702);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: "Cal Sans", sans-serif;
+}

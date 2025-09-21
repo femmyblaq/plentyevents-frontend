@@ -37,6 +37,7 @@ import VendorDashboard from "./Pages/VendorDashboard";
 import Dashboard from './Pages/Dashboard/Dashboard'
 import Overview from './Pages/Dashboard/Overview'
 import Profile from './Pages/Dashboard/Profile'
+import NeedHelp from './Pages/NeedHelp'
 
 //Others
 import RegisterChoice from "./components/RegisterChoice";
@@ -110,6 +111,7 @@ function App() {
         <Route index element={<Overview />} ></Route>
         <Route path="overview" element={<Overview />} ></Route>
           <Route path="profile" element={<Profile />}></Route>
+          <Route path="need_help" element={<NeedHelp />}></Route>
        </Route>
 
 

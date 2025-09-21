@@ -1,0 +1,36 @@
+.cardGreen {
+  background: linear-gradient(120deg, #294E28 80%, #E2F87B 100%);
+  color: #FDFFF6;
+  border: none;
+}
+.cardDark {
+  background-color: #031A09;
+  color: #E2F87B;
+  border: none;
+}
+.cardLight {
+  background-color: #316C40;
+  color: #FDFFF6;
+  border: none;
+}
+.cardYellow {
+  background: linear-gradient(90deg, #E2F87B 70%, #FDFFF6 100%);
+  color: #031A09;
+  border: none;
+}
+.cardCream {
+  background-color: #FDFFF6;
+  color: #294E28;
+  border: none;
+}
+.cardTitle {
+  font-weight: bold;
+}
+.btnCustom {
+  border-color: #294E28 !important;
+  color: #294E28 !important;
+}
+.btnCustom:hover {
+  background: #294E28 !important;
+  color: #E2F87B !important;
+}

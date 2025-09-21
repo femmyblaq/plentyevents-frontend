@@ -10,7 +10,7 @@ export default function Sidebar() {
   return (
     <div className={`${style.Sidebar} ${collapse ? `${style.collapse}` : ''}`} >
       <div className={style.navbrand}>
-        <h3><i className="ri-wallet-3-fill"></i>PLENTY<span>EVENTS</span></h3>
+        <h3><i class="ri-team-fill"></i>PLENTY<span>EVENTS</span></h3>
       </div>
       <div className={style.navlinks}>
         <ul className={`${collapse ? `${style.remove}` : ''}`}>
@@ -19,13 +19,13 @@ export default function Sidebar() {
           </NavLink>
           
           <NavLink to="/dashboard/waiters">
-            {({isActive}) =><li className={isActive ? style.active: ""}><i className="ri-send-plane-fill"></i> Waiters</li>}
+            {({isActive}) =><li className={isActive ? style.active: ""}><i class="ri-team-fill"></i> Waiters</li>}
             </NavLink>
           <NavLink to="/dashboard/bookings">
-            {({isActive}) =><li className={isActive ? style.active: ""}> Bookings</li>}
+            {({isActive}) =><li className={isActive ? style.active: ""}><i class="ri-pass-valid-fill"></i> Bookings</li>}
             </NavLink>
            <NavLink to="/dashboard/profile">
-            {({isActive}) =><li className={isActive ? style.active: ""}><i className="ri-hand-coin-line"></i> Profile</li>}
+            {({isActive}) =><li className={isActive ? style.active: ""}><i class="ri-edit-circle-fill"></i> Profile</li>}
             </NavLink>
            <NavLink to="/dashboard/need_help">
             {({isActive}) =><li className={isActive ? style.active: ""}><i className="ri-question-line"></i> Need Help?</li>}

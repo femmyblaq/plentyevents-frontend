@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./Profile.css"; // Add this line for external styling
 
 const Profile = () => {
   const [formData, setFormData] = useState({
@@ -32,7 +33,7 @@ const Profile = () => {
   };
 
   return (
-    <div className="container py-5" data-aos="fade-up">
+    <div className="container py-5">
       <h2 className="text-black mb-3">Profile</h2>
       <p>Manage your profile information and settings.</p>
       <div className="row mt-4">
@@ -59,7 +60,7 @@ const Profile = () => {
             </div>
             <input
               type="file"
-              className="form-control"
+              className="form-control dark-input"
               name="avatar"
               accept="image/*"
               onChange={handleChange}
@@ -68,12 +69,12 @@ const Profile = () => {
         </div>
         {/* Profile Form - Right Side */}
         <div className="col-md-8">
-          <form className="bg-white rounded p-4 shadow-sm" onSubmit={handleSubmit}>
+          <form className="bg-dark-ash rounded p-4 shadow-sm" onSubmit={handleSubmit}>
             <div className="mb-3">
               <label className="form-label">Name of Vendor</label>
               <input
                 type="text"
-                className="form-control"
+                className="form-control dark-input"
                 name="vendorName"
                 value={formData.vendorName}
                 onChange={handleChange}
@@ -85,7 +86,7 @@ const Profile = () => {
               <label className="form-label">Name of Brand/Company</label>
               <input
                 type="text"
-                className="form-control"
+                className="form-control dark-input"
                 name="brandName"
                 value={formData.brandName}
                 onChange={handleChange}
@@ -97,7 +98,7 @@ const Profile = () => {
               <label className="form-label">Office Address</label>
               <input
                 type="text"
-                className="form-control"
+                className="form-control dark-input"
                 name="officeAddress"
                 value={formData.officeAddress}
                 onChange={handleChange}
@@ -109,7 +110,7 @@ const Profile = () => {
               <label className="form-label">Phone number/Whatsapp number</label>
               <input
                 type="tel"
-                className="form-control"
+                className="form-control dark-input"
                 name="phone"
                 value={formData.phone}
                 onChange={handleChange}
@@ -121,7 +122,7 @@ const Profile = () => {
               <label className="form-label">Email Address</label>
               <input
                 type="email"
-                className="form-control"
+                className="form-control dark-input"
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
@@ -133,7 +134,7 @@ const Profile = () => {
               <label className="form-label">Proof of Incorporation (C.A.C)</label>
               <input
                 type="file"
-                className="form-control"
+                className="form-control dark-input"
                 name="cacProof"
                 accept=".pdf,.jpg,.jpeg,.png"
                 onChange={handleChange}
@@ -144,7 +145,7 @@ const Profile = () => {
               <label className="form-label">Years of Operations</label>
               <input
                 type="number"
-                className="form-control"
+                className="form-control dark-input"
                 name="yearsOfOperation"
                 value={formData.yearsOfOperation}
                 onChange={handleChange}

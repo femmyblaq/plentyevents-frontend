@@ -4,6 +4,7 @@
     position: fixed;
     box-shadow: 3px 0 5px #ccc;
     background-color: #121212;
+    border-right: 1px solid #333;
 }
 .Sidebar .navbrand {
     /* background-color: #121212; */
@@ -11,7 +12,8 @@
     padding: 0 20px;
     display: flex;
     align-items: center;
-    height: 40px;
+    justify-content: center;
+    height: 50px;
 }
 
 .Sidebar .navlinks a {
@@ -25,21 +27,21 @@
 }
 
 .Sidebar .navlinks li.active {
-    background: linear-gradient(90deg, #ff6a00, #ee0979);
+    background: linear-gradient(90deg, #1d7702, #93e704 );
 }
 .Sidebar .navlinks li.active a {
     color: #fff;
 }
 
 .Sidebar .navbrand h3, .Sidebar .footer i {
-    background: linear-gradient(90deg, #ff6a00, #ee0979);
+    background: linear-gradient(90deg, #93e704, #1d7702);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-family: "Cal Sans", sans-serif;
 }
 
 .Sidebar .footer {
-    background-color: #eaeaea;
+    background-color: #333;
     padding: 15px 20px;
     display: flex;
     justify-content: space-between;

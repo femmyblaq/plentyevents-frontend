@@ -7,6 +7,11 @@
     background-color: #eeeded;
     overflow: hidden;
 }
+.Main .mainBody {
+    height: calc(100vh - 50px);
+    overflow: auto;
+    background-color: #121212;
+}
 .Main .footerBar {
     display: none;
 }

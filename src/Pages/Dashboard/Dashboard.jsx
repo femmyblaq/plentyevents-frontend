@@ -10,7 +10,7 @@ export default function Dashboard() {
       <Sidebar />
       <main className={style.Main}>
         <Header />
-        <div style={{ padding: '20px' }} className="bg-warning h-100 text-white" >
+        <div style={{ padding: '20px' }} className={`${style.mainBody} h-100 text-white`} >
 
           <Outlet />
         </div>

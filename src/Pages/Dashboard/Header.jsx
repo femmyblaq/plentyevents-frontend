@@ -1,26 +1,39 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import style from "../Dashboard/Header.module.css"
-import { useState } from 'react'
 
 export default function Header() {
   const [toggle, setToggle] = useState(false)
-  const toggleProfile = ()=> {
+  // Example: Replace with your actual cart state
+  const [cartCount, setCartCount] = useState(2) // Number of waiters added
+
+  const toggleProfile = () => {
     setToggle(prev => !prev)
   }
+
   return (
     <div className={style.Header}>
-      <p>Welcome</p>
-      <div onClick={toggleProfile}>
-        <p>HY</p>
+      <p className='m-0 text-white'>Welcome</p>
+      <div className='d-flex align-items-center gap-4 position-relative'>
+        <div className="position-relative">
+          <i className="text-white fs-5 ri-shopping-cart-2-line"></i>
+          {cartCount > 0 && (
+            <span className={style.cartPill}>
+              {cartCount}
+            </span>
+          )}
+        </div>
+        <div className={style.profileBox} onClick={toggleProfile}>
+          <p className='m-0 fw-bold'>HY</p>
+        </div>
       </div>
       {
         toggle &&
         <ul className={style.profile}>
-        <li><Link><i class="ri-user-6-fill"></i> Edit profile</Link></li>
-        <li><Link><i class="ri-settings-4-line"></i> Settings</Link></li>
-        <li><Link><i class="ri-logout-circle-line"></i> Logout</Link></li>
-      </ul>
+          <li><Link><i className="ri-user-6-fill"></i> Edit profile</Link></li>
+          <li><Link><i className="ri-settings-4-line"></i> Settings</Link></li>
+          <li><Link><i className="ri-logout-circle-line"></i> Logout</Link></li>
+        </ul>
       }
     </div>
   )
