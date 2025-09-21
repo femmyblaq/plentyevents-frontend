@@ -2,7 +2,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://plenty-events-backend.vercel.app/api",
+  baseURL: "https://plenty-events.vercel.app/api",
   headers: {
     "Content-Type": "application/json",
   },

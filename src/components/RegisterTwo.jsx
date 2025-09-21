@@ -22,6 +22,7 @@ const VendorRegister = () => {
         phone: "",
         businessName: "",
         businessDescription: "",
+        role: ""
     });
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
@@ -59,7 +60,7 @@ const VendorRegister = () => {
         setLoading(true); // <-- Start loading
 
         try {
-            const res = await api.post("/vendors/auth/register", formData);
+            const res = await api.post("/auth/register", formData);
             console.log(res.data);
             setMessage("Successfully registered");
             setSuccess("Vendor registration successful!");
@@ -185,7 +186,21 @@ const VendorRegister = () => {
                                 placeholder="Password"
                             />
                         </div>
-
+                        <div className="input-group">
+                            <select
+                            type="select"
+                                name="role"
+                                value={formData.role}
+                                onChange={handleChange}
+                                required
+                                className="input-field"
+                            >
+                                <option value="">Select Role</option>
+                                <option value="vendor">Vendor</option>
+                                <option value="waiter">Waiter</option>
+                                <option value="admin">Admin</option>
+                            </select>
+                        </div>
 
 
                         <div className="input-group">

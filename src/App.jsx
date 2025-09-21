@@ -2,7 +2,9 @@ import React, { useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Navigate } from "react-router-dom";
-
+//New Home
+import NewHome from "./Pages/NewHome";
+//React Router
 //Homepages
 import Navbar from "./components/Navbar";
 import "./App.css";
@@ -38,6 +40,7 @@ import Dashboard from './Pages/Dashboard/Dashboard'
 import Overview from './Pages/Dashboard/Overview'
 import Profile from './Pages/Dashboard/Profile'
 import NeedHelp from './Pages/NeedHelp'
+import Waiters from "./Pages/Dashboard/Waiters.jsx";
 
 //Others
 import RegisterChoice from "./components/RegisterChoice";
@@ -102,6 +105,8 @@ function App() {
 
   return (
     <Routes>
+      // New Home Route
+      <Route path="/" element={<NewHome />} />
       <Route path="/" element={<HomePage />} />
       <Route path="/create-account" element={<CreateAccount />} />
       <Route path="/vendor-register" element={<VendorRegister />} />
@@ -112,6 +117,7 @@ function App() {
         <Route path="overview" element={<Overview />} ></Route>
           <Route path="profile" element={<Profile />}></Route>
           <Route path="need_help" element={<NeedHelp />}></Route>
+          <Route path="waiters" element={<Waiters />}></Route>
        </Route>
 
 

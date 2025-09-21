@@ -20,6 +20,10 @@
     text-decoration: none;
     color: #fff;
 }
+.Sidebar .navlinks ul {
+    width: 100% !important;
+    padding: 0 !important;
+}
 
 .Sidebar .navlinks li {
     padding: 5px 30px;

@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Cal+Sans:wght@700&display=swap');
+
+.landing {
+  position: relative;
+  min-height: 100vh;
+  background: #121212; /* dark mode look */
+  font-family: 'Cal Sans', sans-serif;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  min-height: 100vh;
+  background: rgba(0,0,0,0.7);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 16px 40px 16px;
+  text-align: center;
+  pointer-events: none; /* overlay does not block scrolling of images */
+}
+
+.ctaTitle {
+  font-family: 'Cal Sans', sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+  color: #93e704;
+  margin-bottom: 18px;
+  letter-spacing: 1px;
+}
+
+.ctaDesc {
+  color: #FDFFF6;
+  font-size: 1.25rem;
+  margin-bottom: 32px;
+  max-width: 600px;
+}
+
+.ctaButtons {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.ctaBtn, .ctaBtnOutline {
+  font-family: 'Cal Sans', sans-serif;
+  font-size: 1.1rem;
+  padding: 12px 32px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+  font-weight: 600;
+  box-shadow: 0 2px 16px rgba(41, 78, 40, 0.12);
+}
+
+.ctaBtn {
+  background: linear-gradient(90deg, #44fd0b, #93e704);
+  color: #031A09;
+  border: 2px solid #1d7702;
+}
+
+.ctaBtnOutline {
+  background: transparent;
+  color: #93e704;
+  border: 2px solid #93e704;
+}
+
+.ctaBtn:hover {
+  background: linear-gradient(90deg, #93e704, #37e900);
+  color: #1d7702;
+}
+
+.ctaBtnOutline:hover {
+  background: #93e704;
+  color: #1d7702;
+}
+
+.myMasonryGrid {
+  display: flex;
+  margin-left: -30px; /* gutter size offset */
+  z-index: 1;
+  max-height: 100vh;
+  overflow-y: auto;
+  padding-top: 120px; /* ensures overlay text is visible above images */
+  scrollbar-width: none; /* Firefox */
+}
+
+.myMasonryGrid::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.myMasonryGridColumn {
+  padding-left: 30px; /* gutter size */
+  background-clip: padding-box;
+}
+
+.myMasonryGridColumn > div {
+  margin-bottom: 15px;
+}
+
+.myMasonryGridColumn img {
+  max-height: 400px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 1rem;
+  display: block;
+}
+
+/* Responsive overlay text */
+@media (max-width: 640px) {
+  .ctaTitle {
+    font-size: 2rem;
+  }
+  .ctaDesc {
+    font-size: 1rem;
+  }
+  .myMasonryGridColumn img {
+    max-height: 220px;
+  }
+}

@@ -51,7 +51,7 @@ const Login = () => {
 
     const startTime = Date.now();
     try {
-      const res = await api.post("/vendors/auth/login", formData);
+      const res = await api.post("/auth/login", formData);
       setMessage("Login successful");
       setLoading(false);
       if(res.data.token){
