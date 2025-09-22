@@ -18,11 +18,11 @@ const WaiterDashboard = () => {
     <div className={`${styles.dashboardContainer} p-4 rounded-4`}>
       {/* Header */}
       <header className={styles.dashboardHeader}>
-        <h2>Waiter Dashboard</h2>
-        <div className={styles.profileActions}>
+        <h2>Worker Dashboard</h2>
+        {/* <div className={styles.profileActions}>
           <span className={styles.bell}>🔔</span>
           <Button variant="outline-light" size="sm">Logout</Button>
-        </div>
+        </div> */}
       </header>
 
       {/* Overview Cards */}
@@ -36,7 +36,7 @@ const WaiterDashboard = () => {
         <Card className={`${styles.dashCard} ${styles.blueGradient}`}>
           <Card.Body>
             <h5>Average Rating</h5>
-            <h3>4.5 ⭐</h3>
+            <h3>4.5 <i class="ri-star-fill text-warning"></i></h3>
             <ProgressBar now={90} label="90%" />
           </Card.Body>
         </Card>

@@ -1,0 +1,56 @@
+.bodySection {
+  background: #f9fafb;
+  padding: 60px 20px;
+}
+
+.heading {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #1d7702;
+}
+
+.subtext {
+  max-width: 700px;
+  margin: auto;
+  font-size: 1.1rem;
+  color: #555;
+}
+
+.featureCard {
+  border: none;
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  background: #fff;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease-in-out;
+}
+
+.featureCard:hover {
+  transform: translateY(-5px);
+}
+
+.icon {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: #93e704;
+}
+
+.ctaHeading {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.ctaBtn {
+  font-size: 1rem;
+  padding: 10px 20px;
+  border-radius: 30px;
+}
+
+.ctaBtnOutline {
+  font-size: 1rem;
+  padding: 10px 20px;
+  border-radius: 30px;
+}

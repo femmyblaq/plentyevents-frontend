@@ -20,6 +20,8 @@ import HowItWorks from "./components/HowItWorks";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import TermsAndConditions from "./components/TermsAndConditions";
 
+//Protected Route
+import ProtectedRoute from "./components/ProtectedRoute";
 
 //Registration Pages
 import CreateAccount from "./components/CreateAccount";
@@ -40,6 +42,12 @@ import Waiters from "./Pages/Vendor/Waiters.jsx";
 import WaiterDashboard from "./Pages/Waiter/WaiterDashboard.jsx";
 import WorkerOverview from "./Pages/Waiter/WaiterOverview.jsx";
 import WaiterProfile from "./Pages/Waiter/WaiterProfile.jsx";
+import AvailableHires from "./Pages/Waiter/AvailableHires.jsx";
+import RatingsReviews from "./Pages/Waiter/RatingsReviews.jsx";
+
+
+//Not Found Page
+import NotFound from "./Pages/NotFound.jsx";
 
 //Others
 import RegisterChoice from "./components/RegisterChoice";
@@ -47,20 +55,7 @@ import WorkerDashboard from "./Pages/WorkerDashboard";
 import VendorRegister from "./Pages/VendorRegister";
 import Register from "./Pages/Auth/Register.jsx";
 import { AuthContext } from "./store/AuthContext.jsx";
-// Protect dashboards
-const ProtectedRoute = ({ children, allowedRoles }) => {
-  // export default function PrivateRoute({ children, allowedRoles }) {
-  const { token, role, loading } = useContext(AuthContext);
 
-  if (loading) return <div>Loading...</div>; // wait for cookie check
-
-  if (!token) return <Navigate to="/login" replace />;
-
-  if (allowedRoles && !allowedRoles.includes(role)) {
-    return <Navigate to="/" replace />;
-  }
-  return children;
-};
 
 // Home Page Component
 function HomePage() {
@@ -107,27 +102,35 @@ function App() {
   return (
     <Routes>
       // New Home Route
-      <Route path="/home" element={<NewHome />} />
-      <Route path="/" element={<HomePage />} />
+      <Route path="/" element={<NewHome />} />
+      <Route path="/home" element={<HomePage />} />
       <Route path="/create-account" element={<CreateAccount />} />
       <Route path="/vendor-register" element={<VendorRegister />} />
 
-      // New Vendor Dashboard Route
-       <Route path="/vendor/dashboard" element={<Dashboard />}>
-        <Route index element={<Overview />} ></Route>
-        <Route path="overview" element={<Overview />} ></Route>
-          <Route path="profile" element={<Profile />}></Route>
-          <Route path="need_help" element={<NeedHelp />}></Route>
-          <Route path="waiters" element={<Waiters />}></Route>
-       </Route>
-      // Worker Dashboard Route
-      <Route path="/worker/dashboard" element={<WaiterDashboard />} >
-      <Route index element={<WorkerOverview />} ></Route>
-      {/* <Route path="overview" element={<WorkerOverview />} ></Route> */}
-      <Route path="profile" element={<WaiterProfile />}></Route>
-      <Route path="need_help" element={<NeedHelp />}></Route>
-      {/* <Route path="waiters" element={<Waiters />}></Route> */}
-      </Route>
+      // Vendor Dashboard
+<Route element={<ProtectedRoute allowedRole="vendor" />}>
+  <Route path="/vendor/dashboard" element={<Dashboard />}>
+    <Route index element={<Overview />} />
+    <Route path="overview" element={<Overview />} />
+    <Route path="profile" element={<Profile />} />
+    <Route path="need_help" element={<NeedHelp />} />
+    <Route path="waiters" element={<Waiters />} />
+    <Route path="*" element={<NotFound />} />
+  </Route>
+</Route>
+
+// Worker Dashboard
+<Route element={<ProtectedRoute allowedRole="waiter" />}>
+  <Route path="/worker/dashboard" element={<WaiterDashboard />}>
+    <Route index element={<WorkerOverview />} />
+    <Route path="overview" element={<WorkerOverview />} />
+    <Route path="profile" element={<WaiterProfile />} />
+    <Route path="need_help" element={<NeedHelp />} />
+    <Route path="available-hires" element={<AvailableHires />} />
+    <Route path="ratings-reviews" element={<RatingsReviews />} />
+    <Route path="*" element={<NotFound />} />
+  </Route>
+</Route>
       // Auth and Other Routes
 
 
@@ -157,15 +160,11 @@ function App() {
           </ProtectedRoute>
         }
       />
-      <Route
-        path="/worker-dashboard"
-        element={
-          <ProtectedRoute isAuthenticated={true}>
-            <WorkerDashboard />
-          </ProtectedRoute>
-        }
-      />
+      //Not Found Page
+      <Route path="*" element={<NotFound />} />
     </Routes>
+
+    
   );
 }
 

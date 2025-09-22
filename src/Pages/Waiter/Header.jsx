@@ -15,14 +15,14 @@ export default function Header() {
     <div className={style.Header}>
       <p className='m-0 text-white'>Welcome worker</p>
       <div className='d-flex align-items-center gap-4 position-relative'>
-        {/* <div className="position-relative">
-          <i className="text-white fs-5 ri-shopping-cart-2-line"></i>
+        <div className="position-relative">
+          <i class="ri-notification-3-line fs-5"></i>
           {cartCount > 0 && (
             <span className={style.cartPill}>
               {cartCount}
             </span>
           )}
-        </div> */}
+        </div>
         <div className={style.profileBox} onClick={toggleProfile}>
           <p className='m-0 fw-bold'>HY</p>
         </div>

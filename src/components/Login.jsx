@@ -72,11 +72,11 @@ const Login = () => {
         setTimeout(() => {
           setShowNotification(false);
           if (role === "vendor") {
-            navigate("/vendor-dashboard");
+            navigate("/vendor/dashboard");
           } else if (role === "waiter") {
-            navigate("/worker-dashboard");
+            navigate("/worker/dashboard");
           } else if (role === "admin") {
-            navigate("/admin-dashboard");
+            navigate("/admin/dashboard");
           } else {
             navigate("/"); // fallback
           }

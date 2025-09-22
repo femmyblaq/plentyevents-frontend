@@ -8,18 +8,27 @@ const Navbar = () => {
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
-
+  const style = {
+    navbrand: {
+      background: "linear-gradient(90deg, #93e704, #1d7702)",
+  WebkitBackgroundClip: "text",
+  WebkitTextFillColor: "transparent",
+  fontFamily: '"Cal Sans", sans-serif',
+    },
+  };
   return (
     <nav className="navbar">
       {/* Logo */}
       <div className="logo">
         <Link to="/" style={{ textDecoration: "none", color: "white" }}>
-          Plenty<span style={{ color: "red" }}>Event</span>
+          <div className={style.navbrand}>
+                  <h4>PLENTY<span>EVENTS</span><i className="ri-team-fill"></i></h4>
+                </div>
         </Link>
       </div>
 
       {/* Search bar */}
-      <input type="text" className="search" placeholder="Search vendors..." />
+      {/* <input type="text" className="search" placeholder="Search vendors..." /> */}
 
       {/* Links */}
       <div className={`nav-links ${menuOpen ? "active" : ""}`}>
