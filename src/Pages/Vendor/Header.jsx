@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import style from "../Dashboard/Header.module.css"
+import style from "./Header.module.css"
 
 export default function Header() {
   const [toggle, setToggle] = useState(false)
@@ -13,7 +13,7 @@ export default function Header() {
 
   return (
     <div className={style.Header}>
-      <p className='m-0 text-white'>Welcome</p>
+      <p className='m-0 text-white'>Welcome vendor</p>
       <div className='d-flex align-items-center gap-4 position-relative'>
         <div className="position-relative">
           <i className="text-white fs-5 ri-shopping-cart-2-line"></i>

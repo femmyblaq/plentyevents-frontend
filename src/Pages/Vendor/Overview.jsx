@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import style from "../Dashboard/Overview.module.css";
+import style from "./Overview.module.css";
 
 const Overview = () => {
   const [data, setData] = useState({

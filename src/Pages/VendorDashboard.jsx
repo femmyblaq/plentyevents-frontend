@@ -254,17 +254,18 @@ export default function VendorDashboard() {
   const saveProfile = (data) => setProfile(data);
 const {logout} = useContext(AuthContext);
 const [showConfirmLogout, setShowConfirmLogout] = useState(false);
-  const handleLogoutConfirm = () => {
-    logout();
-    setShowConfirmLogout(false);
-      // navigate("/");
+  const handleLogoutClick = () => {
+    setShowConfirmLogout(true);
+    
     
   };
+  const handleLogoutConfirm = () => {
+    setShowConfirmLogout(false);
+    logout();
+      navigate("/login");
+  }
   const handleLogoutCancel = () => setShowConfirmLogout(false);
   
-  const handleLogout = () => {
-    setShowConfirmLogout(true);
-  };
 
   // Close mobile detail panel
   const closeMobileDetail = () => setSelectedWaiter(null);
@@ -290,7 +291,7 @@ const [showConfirmLogout, setShowConfirmLogout] = useState(false);
             <li className={active === "waiters" ? "active" : ""}><button onClick={() => openTab("waiters")}>Waiters</button></li>
             <li className={active === "bookings" ? "active" : ""}><button onClick={() => openTab("bookings")}>Bookings</button></li>
             <li className={active === "profile" ? "active" : ""}><button onClick={() => openTab("profile")}>Profile</button></li>
-            <li><button onClick={handleLogout} className="logout-link">Log out</button></li>
+            <li><button onClick={handleLogoutClick} className="logout-link">Log out</button></li>
           </ul>
         </nav>
       </aside>

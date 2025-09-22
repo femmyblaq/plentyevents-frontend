@@ -24,6 +24,7 @@ const VendorRegister = () => {
     cacFile: null,
     yearsOfOperation: "",
   });
+  
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 

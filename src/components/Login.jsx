@@ -20,11 +20,11 @@ const Login = () => {
     email: "",
     password: "",
   });
-  const {login} =useContext(AuthContext);
+  const { login, loadToken } = useContext(AuthContext);
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
-  const [showPassword, setShowPassword] = useState(false); // <-- Add this
+  const [showPassword, setShowPassword] = useState(false); 
   const [showNotification, setShowNotification] = useState(false);
   const [notificationMsg, setNotificationMsg] = useState("");
   const [notificationType, setNotificationType] = useState("success");
@@ -34,7 +34,7 @@ const Login = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
     setLoading(true);
@@ -54,8 +54,14 @@ const Login = () => {
       const res = await api.post("/auth/login", formData);
       setMessage("Login successful");
       setLoading(false);
-      if(res.data.token){
-        login(res.data.token);
+      const { token } = res.data;
+      const {role} = res.data.data.user;
+      // const role = user.role;
+      console.log("Login response:", res.data);
+      if (token) {
+        console.log("Role:", role);
+
+        login(token, role);
         setNotificationMsg("Login successful! Redirecting...");
         setNotificationType("success");
         // Calculate duration based on how long login took (min 1200ms, max 3000ms)
@@ -65,14 +71,22 @@ const Login = () => {
         setShowNotification(true);
         setTimeout(() => {
           setShowNotification(false);
-          navigate("/vendor-dashboard");
+          if (role === "vendor") {
+            navigate("/vendor-dashboard");
+          } else if (role === "waiter") {
+            navigate("/worker-dashboard");
+          } else if (role === "admin") {
+            navigate("/admin-dashboard");
+          } else {
+            navigate("/"); // fallback
+          }
         }, duration);
       }
     } catch (error) {
       setLoading(false);
       let msg = "Network error, please try again.";
       if (error.response) {
-        msg = error.response.data.message || "Login failed";
+        msg = error?.response.data.message || "Login failed";
       }
       setMessage(msg);
       setError(msg);

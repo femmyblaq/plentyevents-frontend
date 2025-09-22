@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import style from '../Dashboard/Sidebar.module.css'
+import style from './Sidebar.module.css'
 
 export default function Sidebar() {
   const [collapse, setCollapse] = useState(false);
@@ -14,20 +14,20 @@ export default function Sidebar() {
       </div>
       <div className={style.navlinks}>
         <ul className={`${collapse ? `${style.remove}` : ''}`}>
-          <NavLink to="/dashboard" end>
+          <NavLink to="/vendor/dashboard" end>
             {({isActive}) =><li className={isActive ? style.active: ""}><i className="ri-dashboard-2-line"></i> Dashboard</li>}
           </NavLink>
           
-          <NavLink to="/dashboard/waiters">
+          <NavLink to="/vendor/dashboard/waiters">
             {({isActive}) =><li className={isActive ? style.active: ""}><i class="ri-team-fill"></i> Waiters</li>}
             </NavLink>
-          <NavLink to="/dashboard/bookings">
+          <NavLink to="/vendor/dashboard/bookings">
             {({isActive}) =><li className={isActive ? style.active: ""}><i class="ri-pass-valid-fill"></i> Bookings</li>}
             </NavLink>
-           <NavLink to="/dashboard/profile">
+           <NavLink to="/vendor/dashboard/profile">
             {({isActive}) =><li className={isActive ? style.active: ""}><i class="ri-edit-circle-fill"></i> Profile</li>}
             </NavLink>
-           <NavLink to="/dashboard/need_help">
+           <NavLink to="/vendor/dashboard/need_help">
             {({isActive}) =><li className={isActive ? style.active: ""}><i className="ri-question-line"></i> Need Help?</li>}
             </NavLink>
         </ul>

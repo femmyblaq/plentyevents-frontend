@@ -4,11 +4,11 @@ import { FcGoogle } from "react-icons/fc";
 import { FaApple } from "react-icons/fa";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import "./Auth.css";
-import vendorImg from "../images/iam.jpeg";
-import api from "../api/axios.js"
+import "../../components/Auth.css";
+import vendorImg from "../../images/iam.jpeg";
+import api from "../../api/axios.js"
 
-const VendorRegister = () => {
+const Register = () => {
     const navigate = useNavigate();
     useEffect(() => {
         AOS.init({ duration: 800, once: false });
@@ -24,6 +24,7 @@ const VendorRegister = () => {
         businessDescription: "",
         role: ""
     });
+    const [showPassword, setShowPassword] = useState(false); 
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
     const [message, setMessage] = useState("");
@@ -178,7 +179,7 @@ const VendorRegister = () => {
                         {/* 🔑 Password fields */}
                         <div className="input-group">
                             <input
-                                type="password"
+                                type={showPassword ? "text" : "password"}
                                 name="password"
                                 value={formData.password}
                                 onChange={handleChange}
@@ -186,6 +187,23 @@ const VendorRegister = () => {
                                 className="input-field"
                                 placeholder="Password"
                             />
+                            <button
+                type="button"
+                onClick={() => setShowPassword((prev) => !prev)}
+                style={{
+                  position: "absolute",
+                  right: "10px",
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  background: "none",
+                  border: "none",
+                  cursor: "pointer",
+                  fontSize: "14px"
+                }}
+                tabIndex={-1}
+              >
+                {showPassword ? "Hide" : "Show"}
+              </button>
                         </div>
                         <div className="input-group">
                             <select
@@ -268,4 +286,4 @@ const VendorRegister = () => {
 }
 */
 
-export default VendorRegister;
+export default Register;

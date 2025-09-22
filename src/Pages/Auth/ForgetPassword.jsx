@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import style from  "../Pages/ForgotPassword.module.css"; // Optional: for custom styles
-import leftImg from "../images/tunde.jpg";// Replace with your image path
+// import style from  "../Auth/ForgetPassword.module.css"; // Optional: for custom styles
+import leftImg from "../../images/tunde.jpg";// Replace with your image path
 
 const ForgetPassword = () => {
   const [email, setEmail] = useState("");

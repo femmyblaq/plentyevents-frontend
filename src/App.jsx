@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Navigate } from "react-router-dom";
@@ -24,40 +24,40 @@ import TermsAndConditions from "./components/TermsAndConditions";
 //Registration Pages
 import CreateAccount from "./components/CreateAccount";
 import Login from "./components/Login";
-import ForgetPassword from "./Pages/ForgetPassword.jsx";
+import ForgetPassword from "./Pages/Auth/ForgetPassword.jsx";
 
 //Dashboard(Vendor)
 import VendorDashboard from "./Pages/VendorDashboard";
-// import DashboardHome from "./components/dashboard/DashboardHome";
-// import Waiters from "./components/dashboard/Waiters";
-// import Listings from "./components/dashboard/Listings";
-// import Profile from "./components/dashboard/Profile";
-// import CreateListing from "./components/dashboard/CreateListing";
-// import Bookings from "./components/dashboard/Bookings";
 
-//New Dashboard
-import Dashboard from './Pages/Dashboard/Dashboard'
-import Overview from './Pages/Dashboard/Overview'
-import Profile from './Pages/Dashboard/Profile'
+//New Vendor Dashboard
+import Dashboard from './Pages/Vendor/Dashboard.jsx'
+import Overview from './Pages/Vendor/Overview.jsx'
+import Profile from './Pages/Vendor/Profile.jsx'
 import NeedHelp from './Pages/NeedHelp'
-import Waiters from "./Pages/Dashboard/Waiters.jsx";
+import Waiters from "./Pages/Vendor/Waiters.jsx";
+
+//New Worker Dashboard
+import WaiterDashboard from "./Pages/Waiter/Overview.jsx";
+import WorkerOverview from "./Pages/Waiter/Overview.jsx";
 
 //Others
 import RegisterChoice from "./components/RegisterChoice";
 import WorkerDashboard from "./Pages/WorkerDashboard";
 import VendorRegister from "./Pages/VendorRegister";
-import RegisterTwo from "./components/RegisterTwo"
+import Register from "./Pages/Auth/Register.jsx";
 import { AuthContext } from "./store/AuthContext.jsx";
 // Protect dashboards
-const ProtectedRoute = ({ children }) => {
-  const { isAuthenticated } = React.useContext(AuthContext);
-  if (!isAuthenticated) {
-    return <Navigate to="/login" replace />;
+const ProtectedRoute = ({ children, allowedRoles }) => {
+  // export default function PrivateRoute({ children, allowedRoles }) {
+  const { token, role, loading } = useContext(AuthContext);
+
+  if (loading) return <div>Loading...</div>; // wait for cookie check
+
+  if (!token) return <Navigate to="/login" replace />;
+
+  if (allowedRoles && !allowedRoles.includes(role)) {
+    return <Navigate to="/" replace />;
   }
-  // const user = JSON.parse(localStorage.getItem("user"));
-  // if (!user || user.role !== role) {
-  //   return <Navigate to="/login" replace />;
-  // }
   return children;
 };
 
@@ -111,20 +111,24 @@ function App() {
       <Route path="/create-account" element={<CreateAccount />} />
       <Route path="/vendor-register" element={<VendorRegister />} />
 
-      // New Dashboard Route
-       <Route path="/dashboard" element={<Dashboard />}>
+      // New Vendor Dashboard Route
+       <Route path="/vendor/dashboard" element={<Dashboard />}>
         <Route index element={<Overview />} ></Route>
         <Route path="overview" element={<Overview />} ></Route>
           <Route path="profile" element={<Profile />}></Route>
           <Route path="need_help" element={<NeedHelp />}></Route>
           <Route path="waiters" element={<Waiters />}></Route>
        </Route>
+      // Worker Dashboard Route
+      <Route path="/worker/dashboard" element={<WaiterDashboard />} >
+      <Route index element={<Overview />} ></Route>
+        <Route path="overview" element={<WorkerOverview />} ></Route>
+      </Route>
+      // Auth and Other Routes
 
 
 
-
-
-      <Route path="/register" element={<RegisterChoice />} />
+      <Route path="/register-choice" element={<RegisterChoice />} />
       <Route path="/login" element={<Login />} />
       <Route path="/forget-password" element={<ForgetPassword />} />
       <Route path="/about" element={<About />} />
@@ -135,7 +139,7 @@ function App() {
       <Route path="/how-it-works" element={<HowItWorks />} />
       <Route path="/privacy-policy" element={<PrivacyPolicy />} />
       <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
-      <Route path="/register-two" element={<RegisterTwo />} />
+      <Route path="/register" element={<Register/>} />
       
       
       
