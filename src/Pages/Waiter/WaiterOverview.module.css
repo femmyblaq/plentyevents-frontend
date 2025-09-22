@@ -1,0 +1,119 @@
+.dashboardContainer {
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+.dashboardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.profileActions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.bell {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.overviewCards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.dashCard {
+  text-align: center;
+  box-shadow: 0px 3px 6px rgba(0,0,0,0.1);
+}
+
+.ratingCard {
+  margin-bottom: 15px;
+  background: #fffbea;
+  border-left: 5px solid #ffc107;
+}
+
+
+
+.dashboardContainer {
+  background: #121212;
+  color: #fff;
+  min-height: 100vh;
+}
+
+.dashboardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.profileActions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.bell {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.overviewCards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.dashCard {
+  color: #fff;
+  border: none;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Gradient Styles */
+.greenGradient {
+  background: linear-gradient(135deg, #93e704, #56ab2f);
+}
+
+.blueGradient {
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+}
+
+.purpleGradient {
+  background: linear-gradient(135deg, #8e2de2, #4a00e0);
+}
+
+/* Dark table */
+.darkTable {
+  background-color: #1e1e1e;
+  color: #fff;
+  border-color: #333;
+}
+
+.darkTable th {
+  background-color: #2c2c2c;
+  color: #ddd;
+}
+
+.darkTable td {
+  background-color: #1e1e1e;
+  color: #eee;
+}
+
+/* Ratings card */
+.ratingCard {
+  background-color: #1c1c1c;
+  color: #fff;
+  border: 1px solid #333;
+  margin-bottom: 12px;
+  border-radius: 12px;
+}

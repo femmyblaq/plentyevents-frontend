@@ -37,8 +37,9 @@ import NeedHelp from './Pages/NeedHelp'
 import Waiters from "./Pages/Vendor/Waiters.jsx";
 
 //New Worker Dashboard
-import WaiterDashboard from "./Pages/Waiter/Overview.jsx";
-import WorkerOverview from "./Pages/Waiter/Overview.jsx";
+import WaiterDashboard from "./Pages/Waiter/WaiterDashboard.jsx";
+import WorkerOverview from "./Pages/Waiter/WaiterOverview.jsx";
+import WaiterProfile from "./Pages/Waiter/WaiterProfile.jsx";
 
 //Others
 import RegisterChoice from "./components/RegisterChoice";
@@ -106,7 +107,7 @@ function App() {
   return (
     <Routes>
       // New Home Route
-      <Route path="/" element={<NewHome />} />
+      <Route path="/home" element={<NewHome />} />
       <Route path="/" element={<HomePage />} />
       <Route path="/create-account" element={<CreateAccount />} />
       <Route path="/vendor-register" element={<VendorRegister />} />
@@ -121,8 +122,11 @@ function App() {
        </Route>
       // Worker Dashboard Route
       <Route path="/worker/dashboard" element={<WaiterDashboard />} >
-      <Route index element={<Overview />} ></Route>
-        <Route path="overview" element={<WorkerOverview />} ></Route>
+      <Route index element={<WorkerOverview />} ></Route>
+      {/* <Route path="overview" element={<WorkerOverview />} ></Route> */}
+      <Route path="profile" element={<WaiterProfile />}></Route>
+      <Route path="need_help" element={<NeedHelp />}></Route>
+      {/* <Route path="waiters" element={<Waiters />}></Route> */}
       </Route>
       // Auth and Other Routes
 

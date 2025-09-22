@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, Button, Table, ProgressBar } from "react-bootstrap";
-import styles from "./Overview.module.css";
+import styles from "./WaiterOverview.module.css";
 
 const WaiterDashboard = () => {
   // Sample data
@@ -15,32 +15,32 @@ const WaiterDashboard = () => {
   ];
 
   return (
-    <div className={styles.dashboardContainer}>
+    <div className={`${styles.dashboardContainer} p-4 rounded-4`}>
       {/* Header */}
       <header className={styles.dashboardHeader}>
         <h2>Waiter Dashboard</h2>
         <div className={styles.profileActions}>
           <span className={styles.bell}>🔔</span>
-          <Button variant="outline-danger" size="sm">Logout</Button>
+          <Button variant="outline-light" size="sm">Logout</Button>
         </div>
       </header>
 
       {/* Overview Cards */}
-      <div className={styles.overviewCards}>
-        <Card className={styles.dashCard}>
+      <div className={`${styles.overviewCards} mb-4`}>
+        <Card className={`${styles.dashCard} ${styles.greenGradient}`}>
           <Card.Body>
             <h5>Jobs Available</h5>
             <h3>{jobs.length}</h3>
           </Card.Body>
         </Card>
-        <Card className={styles.dashCard}>
+        <Card className={`${styles.dashCard} ${styles.blueGradient}`}>
           <Card.Body>
             <h5>Average Rating</h5>
             <h3>4.5 ⭐</h3>
             <ProgressBar now={90} label="90%" />
           </Card.Body>
         </Card>
-        <Card className={styles.dashCard}>
+        <Card className={`${styles.dashCard} ${styles.purpleGradient}`}>
           <Card.Body>
             <h5>Hired Count</h5>
             <h3>12</h3>
@@ -51,7 +51,7 @@ const WaiterDashboard = () => {
       {/* Jobs Section */}
       <section>
         <h4>Available Hires</h4>
-        <Table striped bordered hover responsive>
+        <Table bordered hover responsive className={styles.darkTable}>
           <thead>
             <tr>
               <th>Vendor</th>
