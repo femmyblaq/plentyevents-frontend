@@ -8,18 +8,8 @@ import Body from "../components/Body";
 
 const LandingPage = () => {
   const images = [
-    // Waiters
-    // "https://www.freepik.com/free-photo/blue-lagoon-sangria-lemonade-glasses-inside-ice-tray_5588418.htm#fromView=search&page=1&position=38&uuid=c11f3837-f208-4d13-887d-81bce5c5697d&query=cocktail+party",
-    // "https://www.freepik.com/free-photo/people-drinking-cocktails_94964850.htm#fromView=search&page=1&position=3&uuid=c11f3837-f208-4d13-887d-81bce5c5697d&query=cocktail+party",
-    // "https://www.freepik.com/free-photo/blue-lagoon-sangria-lemonade-glasses-inside-ice-tray_5588418.htm#fromView=search&page=1&position=38&uuid=c11f3837-f208-4d13-887d-81bce5c5697d&query=cocktail+party",
-    // Bartenders
-    // "https://images.unsplash.com/photo-1514361892635-cebbd6b8a2b7?auto=format&fit=crop&w=600&q=80",
-    // "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=600&q=80",
-    // Waitress
-    // "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80",
-    // "https://images.unsplash.com/photo-1465101178521-c1a6f3b5f0a6?auto=format&fit=crop&w=600&q=80",
     // Caterer
-    "https://www.freepik.com/free-photo/blue-lagoon-sangria-lemonade-glasses-inside-ice-tray_5588418.htm#fromView=search&page=1&position=38&uuid=c11f3837-f208-4d13-887d-81bce5c5697d&query=cocktail+party",
+    "https://img.freepik.com/free-photo/front-view-woman-working-service-industry_23-2150722812.jpg?t=st=1758642207~exp=1758645807~hmac=e4b3a482ba0219d09440c65be47de38465fd66e3affc8c72ebd4ead48edf22b2&w=1480",
     "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80",
     "https://img.freepik.com/premium-photo/generative-ai-shows-man-receiving-food-from-indoor-buffet-while-holding-glass-champagne_28914-19162.jpg?w=1480",
     // Cocktails
@@ -38,6 +28,12 @@ const LandingPage = () => {
     "https://img.freepik.com/premium-photo/catering-wedding_97070-818.jpg?w=1480",
     "https://img.freepik.com/premium-photo/close-up-beer-table_1048944-9404495.jpg?w=1480",
     "https://img.freepik.com/premium-photo/close-up-food-table_1048944-26908988.jpg?w=1480",
+    "https://img.freepik.com/free-photo/blue-lagoon-sangria-lemonade-glasses-inside-ice-tray_114579-3528.jpg?t=st=1758554429~exp=1758558029~hmac=1864a61d268c0e10e56ad333fb281a7adfe6bfb35ae31fbc0a6f83939c3909ab&w=1480",
+    "https://img.freepik.com/free-photo/blue-lagoon-sangria-lemonade-glasses-inside-ice-tray_114579-3528.jpg?t=st=1758554429~exp=1758558029~hmac=1864a61d268c0e10e56ad333fb281a7adfe6bfb35ae31fbc0a6f83939c3909ab&w=1480",
+    "https://img.freepik.com/free-photo/blue-lagoon-sangria-lemonade-glasses-inside-ice-tray_114579-3528.jpg?t=st=1758554429~exp=1758558029~hmac=1864a61d268c0e10e56ad333fb281a7adfe6bfb35ae31fbc0a6f83939c3909ab&w=1480",
+    "https://img.freepik.com/free-photo/blue-lagoon-sangria-lemonade-glasses-inside-ice-tray_114579-3528.jpg?t=st=1758554429~exp=1758558029~hmac=1864a61d268c0e10e56ad333fb281a7adfe6bfb35ae31fbc0a6f83939c3909ab&w=1480",
+    "https://img.freepik.com/free-photo/blue-lagoon-sangria-lemonade-glasses-inside-ice-tray_114579-3528.jpg?t=st=1758554429~exp=1758558029~hmac=1864a61d268c0e10e56ad333fb281a7adfe6bfb35ae31fbc0a6f83939c3909ab&w=1480",
+    "https://img.freepik.com/free-photo/blue-lagoon-sangria-lemonade-glasses-inside-ice-tray_114579-3528.jpg?t=st=1758554429~exp=1758558029~hmac=1864a61d268c0e10e56ad333fb281a7adfe6bfb35ae31fbc0a6f83939c3909ab&w=1480",
     "https://img.freepik.com/free-photo/blue-lagoon-sangria-lemonade-glasses-inside-ice-tray_114579-3528.jpg?t=st=1758554429~exp=1758558029~hmac=1864a61d268c0e10e56ad333fb281a7adfe6bfb35ae31fbc0a6f83939c3909ab&w=1480",
   ];
 

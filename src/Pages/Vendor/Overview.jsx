@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import style from "./Overview.module.css";
+import { getWaiters } from "../../api/getWaiters";
 
 const Overview = () => {
   const [data, setData] = useState({
@@ -9,7 +10,20 @@ const Overview = () => {
     savedPicks: 0,
   });
 
+  const fetchWaiters = async () => {
+    try {
+      const response = await getWaiters({ status: "available" });
+      console.log("Fetched waiters:", response);
+      // setData((prevData) => ({
+      //   ...prevData,
+      //   availableWaiters: response.length,
+      // }));
+    } catch (error) {
+      console.error("Error fetching waiters:", error);
+    }
+  }
   useEffect(() => {
+    fetchWaiters();
     // Replace with your actual API endpoint
     axios
       .get("https://your-api.com/overview")
@@ -76,3 +90,4 @@ const Overview = () => {
 };
 
 export default Overview;
+  

@@ -1,16 +1,22 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+
 import { Link, NavLink } from 'react-router-dom'
 import style from './Sidebar.module.css'
+import { useSidebar } from '../../store/SidebarToggleContext.jsx'
 
 export default function Sidebar() {
+  const {isOpen, toggleSidebar } = useSidebar();
   const [collapse, setCollapse] = useState(false);
+
+  console.log("Sidebar isOpen:", isOpen);
   const SidebarCollapse = () => {
     setCollapse(prev => !prev)
   }
   return (
-    <div className={`${style.Sidebar} ${collapse ? `${style.collapse}` : ''}`} >
-      <div className={style.navbrand}>
+    <div className={`${style.Sidebar} ${collapse ? `${style.collapse}` : ''} ${isOpen ? `${style.hide}` : ''}`} >
+      <div className={`${style.navbrand} d-flex align-items-center}`}>
         <h3><i class="ri-team-fill"></i>PLENTY<span>EVENTS</span></h3>
+        <i onClick={toggleSidebar} class="ri-close-line"></i>
       </div>
       <div className={style.navlinks}>
         <ul className={`${collapse ? `${style.remove}` : ''}`}>

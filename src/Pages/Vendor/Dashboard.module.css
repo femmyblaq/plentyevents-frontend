@@ -6,6 +6,10 @@
     height: 100vh;
     background-color: #eeeded;
     overflow: hidden;
+    transition: all 500ms ease-in-out !important;
+}
+.mainWidth {
+    width: 100% !important;
 }
 .Main .mainBody {
     height: calc(100vh - 50px);

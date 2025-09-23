@@ -1,18 +1,21 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import style from "./Header.module.css"
+import { useSidebar } from '../../store/SidebarToggleContext'
 
 export default function Header() {
-  const [toggle, setToggle] = useState(false)
+  const [toggle, setToggle] = useState(false);
+  const { toggleSidebar, isOpen } = useSidebar();
   // Example: Replace with your actual cart state
   const [cartCount, setCartCount] = useState(2) // Number of waiters added
 
   const toggleProfile = () => {
     setToggle(prev => !prev)
   }
-
+  
   return (
-    <div className={style.Header}>
+    <div className={`${style.Header} ${isOpen ? `${style.fullWidth}` : ''}`}>
+      <i onClick={toggleSidebar} class="ri-menu-fill"></i>
       <p className='m-0 text-white'>Welcome vendor</p>
       <div className='d-flex align-items-center gap-4 position-relative'>
         <div className="position-relative">

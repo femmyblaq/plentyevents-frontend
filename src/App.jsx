@@ -57,6 +57,8 @@ import Register from "./Pages/Auth/Register.jsx";
 import { AuthContext } from "./store/AuthContext.jsx";
 
 
+
+
 // Home Page Component
 function HomePage() {
   return (
@@ -108,29 +110,31 @@ function App() {
       <Route path="/vendor-register" element={<VendorRegister />} />
 
       // Vendor Dashboard
-<Route element={<ProtectedRoute allowedRole="vendor" />}>
-  <Route path="/vendor/dashboard" element={<Dashboard />}>
-    <Route index element={<Overview />} />
-    <Route path="overview" element={<Overview />} />
-    <Route path="profile" element={<Profile />} />
-    <Route path="need_help" element={<NeedHelp />} />
-    <Route path="waiters" element={<Waiters />} />
-    <Route path="*" element={<NotFound />} />
-  </Route>
-</Route>
+      
+        <Route element={<ProtectedRoute allowedRole="vendor" />}>
+          <Route path="/vendor/dashboard" element={<Dashboard />}>
+            <Route index element={<Overview />} />
+            <Route path="overview" element={<Overview />} />
+            <Route path="profile" element={<Profile />} />
+            <Route path="need_help" element={<NeedHelp />} />
+            <Route path="waiters" element={<Waiters />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
+        </Route>
 
 // Worker Dashboard
-<Route element={<ProtectedRoute allowedRole="waiter" />}>
-  <Route path="/worker/dashboard" element={<WaiterDashboard />}>
-    <Route index element={<WorkerOverview />} />
-    <Route path="overview" element={<WorkerOverview />} />
-    <Route path="profile" element={<WaiterProfile />} />
-    <Route path="need_help" element={<NeedHelp />} />
-    <Route path="available-hires" element={<AvailableHires />} />
-    <Route path="ratings-reviews" element={<RatingsReviews />} />
-    <Route path="*" element={<NotFound />} />
-  </Route>
-</Route>
+        <Route element={<ProtectedRoute allowedRole="waiter" />}>
+          <Route path="/worker/dashboard" element={<WaiterDashboard />}>
+            <Route index element={<WorkerOverview />} />
+            <Route path="overview" element={<WorkerOverview />} />
+            <Route path="profile" element={<WaiterProfile />} />
+            <Route path="need_help" element={<NeedHelp />} />
+            <Route path="available-hires" element={<AvailableHires />} />
+            <Route path="ratings-reviews" element={<RatingsReviews />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
+        </Route>
+      
       // Auth and Other Routes
 
 
@@ -146,10 +150,10 @@ function App() {
       <Route path="/how-it-works" element={<HowItWorks />} />
       <Route path="/privacy-policy" element={<PrivacyPolicy />} />
       <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
-      <Route path="/register" element={<Register/>} />
-      
-      
-      
+      <Route path="/register" element={<Register />} />
+
+
+
 
       {/* ✅ Protected dashboards */}
       <Route
@@ -164,7 +168,7 @@ function App() {
       <Route path="*" element={<NotFound />} />
     </Routes>
 
-    
+
   );
 }
 

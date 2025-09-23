@@ -8,7 +8,7 @@ export default function Dashboard() {
   return (
     <div>
       <Sidebar />
-      <main className={style.Main}>
+      <main className={`${style.Main} ${isOpen ? `${style.mainWidth}` : ''}` }>
         <Header />
         <div style={{ padding: '20px' }} className={`${style.mainBody} h-100 text-white`} >
           <Outlet />

@@ -29,7 +29,7 @@ const ForgetPassword = () => {
         <div className="col-lg-6 d-flex align-items-center justify-content-center">
           <div className="w-100" style={{ maxWidth: 400 }}>
             <h2 className="mb-4 text-center">Forgot Your Password?</h2>
-            <p className="mb-4 text-muted text-center">
+            <p className="mb-4 text-white text-center">
               Enter your email address and we'll send you instructions to reset your password.
             </p>
             <form onSubmit={handleSubmit} className="mb-3">
@@ -47,7 +47,7 @@ const ForgetPassword = () => {
                   required
                 />
               </div>
-              <button type="submit" className="btn btn-primary w-100">
+              <button type="submit" className="btn btn-primary w-100" >
                 Send Reset Link
               </button>
             </form>

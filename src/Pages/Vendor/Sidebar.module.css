@@ -5,15 +5,20 @@
     box-shadow: 3px 0 5px #ccc;
     background-color: #121212;
     border-right: 1px solid #333;
+    transition: all 500ms ease-in-out !important;
+}
+.hide {
+    left: -100% !important;
+    z-index: 999;
 }
 .Sidebar .navbrand {
     /* background-color: #121212; */
     background-color: #333;
     padding: 0 20px;
     display: flex;
-    align-items: center;
-    justify-content: center;
     height: 50px;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .Sidebar .navlinks a {
@@ -55,6 +60,7 @@
     font-size: 1.2rem;
     cursor: pointer;
 }
+
 
 
 
