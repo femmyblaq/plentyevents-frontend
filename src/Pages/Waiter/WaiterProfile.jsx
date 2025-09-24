@@ -90,15 +90,12 @@ const ProfileForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const validationErrors = validate();
-
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
-      setSuccessMsg("");
-    } else {
-      setErrors({});
-      console.log("Form submitted:", formData);
-      setSuccessMsg("Profile updated successfully ✅");
+    try {
+      await api.put(`/${role}/${userId}/profile`, profile);
+      alert("Profile updated successfully!");
+    } catch (err) {
+      console.error(err);
+      alert("Error updating profile");
     }
   };
 

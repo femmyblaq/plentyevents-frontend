@@ -22,6 +22,7 @@ const Login = () => {
   });
   const { login, loadToken } = useContext(AuthContext);
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false); 
@@ -105,7 +106,29 @@ const Login = () => {
         <div className="form-box">
           <h2>Login</h2>
           <p>Welcome back!</p>
+          {/* Notification message */}
+                    {(error || success) && (
+                        <div
+                            style={{
+                                marginBottom: "15px",
+                                padding: "10px",
+                                borderRadius: "5px",
+                                background: error ? "#ffe5e5" : "#e5ffe5",
+                                color: error ? "#d8000c" : "#4F8A10",
+                                textAlign: "center",
+                                fontWeight: "bold",
+                            }}
+                        >
+                            {error || success}
+                        </div>
+                    )}
 
+                    {/* Preloader */}
+                    {loading && (
+                        <div style={{ textAlign: "center", marginBottom: "15px" }}>
+                            <div className="spinner" />
+                        </div>
+                    )}
           <form onSubmit={handleSubmit}>
             <div className="input-group">
               <input
@@ -182,8 +205,8 @@ const Login = () => {
             </div>
 
             <button type="submit" className="auth-btn">
-              SIGN IN
-              <div className="btn-glow"></div>
+              {loading ? "Loging in..." : "Login"}
+                            <div className="btn-glow"></div>
             </button>
           </form>
 

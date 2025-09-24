@@ -5,6 +5,7 @@ import styles from "../Pages/NewHome.module.css";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import Body from "../components/Body";
+import { Link } from "react-router-dom";
 
 const LandingPage = () => {
   const images = [
@@ -58,8 +59,8 @@ const LandingPage = () => {
           {/* <a href="/register" className={styles.ctaBtn}>Join as Vendor</a>
           <a href="/register" className={styles.ctaBtnOutline}>Join as Waiter</a> */}
 
-          <button className={`${styles.ctaBtn} btn btn-success me-3`}>Join as Vendor</button>
-          <button className={`${styles.ctaBtnOutline} btn btn-outline-success`}>Join as Waiter</button>
+          <Link to="register"><button className={`${styles.ctaBtn} btn btn-success me-3`}>Join as Vendor</button></Link>
+          <Link to="register"><button className={`${styles.ctaBtnOutline} btn btn-outline-success`}>Join as Waiter</button></Link>
         </div>
       </div>
       {/* Masonry Images */}

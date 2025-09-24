@@ -235,7 +235,7 @@ const Register = () => {
                         </div>
 
                         <button type="submit" className="auth-btn" disabled={loading}>
-                            {loading ? "Registering..." : "Register as Vendor"}
+                            {loading ? "Registering..." : "Register"}
                             <div className="btn-glow"></div>
                         </button>
                     </form>
