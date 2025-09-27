@@ -2,39 +2,81 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import style from "./Overview.module.css";
 import { getWaiters } from "../../api/getWaiters";
-
+import api from "../../api/axios";
 const Overview = () => {
   const [data, setData] = useState({
     availableWaiters: 0,
     activeBookings: 0,
     savedPicks: 0,
   });
+  const [loading, setLoading] = useState(true);
+
+
+  api.interceptors.request.use((config) => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  });
 
   const fetchWaiters = async () => {
     try {
       const response = await getWaiters({ status: "available" });
-      console.log("Fetched waiters:", response);
-      // setData((prevData) => ({
-      //   ...prevData,
-      //   availableWaiters: response.length,
-      // }));
+      setData((prev) => ({
+        ...prev,
+        availableWaiters: response.length,
+      }));
     } catch (error) {
       console.error("Error fetching waiters:", error);
     }
-  }
+  };
+
   useEffect(() => {
-    fetchWaiters();
-    // Replace with your actual API endpoint
-    axios
-      .get("https://your-api.com/overview")
-      .then((response) => {
-        // Assuming API returns { availableWaiters: 34, activeBookings: 2, savedPicks: 0 }
-        setData(response.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching overview:", error);
-      });
+    const token = localStorage.getItem("token");
+    if (!token) {
+      // no token = not logged in
+      window.location.href = "/login";
+      return;
+    }
+
+    const fetchOverview = async () => {
+      try {
+        // validate token with backend
+        const res = await api.get("/auth/profile");
+        if (!res.data) {
+          localStorage.removeItem("token");
+          window.location.href = "/login";
+          return;
+        }
+
+        // fetch overview data
+        const overviewRes = await api.get("/waiters"); 
+        setData(overviewRes.data);
+
+        // fetch available waiters separately
+        fetchWaiters();
+      } catch (err) {
+        console.error("Session expired or fetch failed:", err);
+        localStorage.removeItem("token");
+        window.location.href = "/login"; // redirect to login if invalid session
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchOverview();
   }, []);
+
+  if (loading) {
+    return (
+      <div className="d-flex justify-content-center align-items-center vh-100">
+        <div className="spinner-border text-danger" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className={`${style.overview} container mt-4`}>
@@ -79,8 +121,10 @@ const Overview = () => {
             </p>
           ) : (
             <ul>
-              {/* Example: Map through recent picks if your API provides them */}
-              {/* response.data.recentPicks.map(pick => <li key={pick.id}>{pick.name}</li>) */}
+              {/* If API provides recent picks, map them here */}
+              {/* data.recentPicks.map((pick) => (
+                <li key={pick.id}>{pick.name}</li>
+              )) */}
             </ul>
           )}
         </div>
@@ -90,4 +134,3 @@ const Overview = () => {
 };
 
 export default Overview;
-  

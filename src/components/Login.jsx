@@ -6,7 +6,7 @@ import "./Auth.css";
 import iamImg from "../images/tunde.jpg";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import api from "../api/axios.js"
+import api, {setAuthToken} from "../api/axios.js"
 import { AuthContext } from "../store/AuthContext.jsx";
 import NotificationModal from "../components/modal/NotificationModal.jsx";
 
@@ -61,7 +61,7 @@ const Login = () => {
       console.log("Login response:", res.data);
       if (token) {
         console.log("Role:", role);
-
+        setAuthToken(token);
         login(token, role);
         setNotificationMsg("Login successful! Redirecting...");
         setNotificationType("success");

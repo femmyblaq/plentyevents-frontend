@@ -3,10 +3,16 @@ import React, { useState, useContext } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import style from './Sidebar.module.css'
 import { useSidebar } from '../../store/SidebarToggleContext.jsx'
-
+import { setAuthToken } from "../../api/axios";
 export default function Sidebar() {
   const {isOpen, toggleSidebar } = useSidebar();
   const [collapse, setCollapse] = useState(false);
+  
+
+const handleLogout = () => {
+  setAuthToken(null); // ✅ removes from localStorage
+  navigate("/login");
+};
 
   console.log("Sidebar isOpen:", isOpen);
   const SidebarCollapse = () => {
@@ -39,7 +45,7 @@ export default function Sidebar() {
         </ul>
       </div>
       <div className={style.footer}>
-        <i className="ri-logout-circle-line"></i>
+        <i onClick={handleLogout} className="ri-logout-circle-line"></i>
         <i onClick={SidebarCollapse} className="ri-arrow-left-s-line"></i>
       </div>
     </div>

@@ -6,7 +6,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import "../../components/Auth.css";
 import vendorImg from "../../images/iam.jpeg";
-import api from "../../api/axios.js"
+import api, { setAuthToken } from "../../api/axios";
 
 const Register = () => {
     const navigate = useNavigate();
@@ -63,7 +63,10 @@ const Register = () => {
 
         try {
             const res = await api.post("/auth/register", formData);
-            console.log(res.data);
+            const token = res.data.token;
+            if(token) {
+                setAuthToken(token)
+            }
             setMessage("Successfully registered");
             setSuccess("Vendor registration successful!");
             setLoading(false); // <-- Stop loading

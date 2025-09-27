@@ -1,17 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Form, Button, Row, Col, Alert } from "react-bootstrap";
 import styles from "./WaiterProfile.module.css";
-
+import api from '../../api/axios';
 const ProfileForm = () => {
-  // Dummy API response
-  const apiData = {
-    firstName: "Matthew",
-    lastName: "Amodu",
-    email: "amodumatthew@gmail.com",
-    phone: "09057025299",
-    role: "waiter",
-  };
-
   const [formData, setFormData] = useState({
     firstName: "",
     middleName: "",
@@ -48,16 +39,29 @@ const ProfileForm = () => {
   const [errors, setErrors] = useState({});
   const [successMsg, setSuccessMsg] = useState("");
 
-  // Pre-fill with API data
+  // 🔹 Load from localStorage or API on mount
   useEffect(() => {
-    setFormData((prev) => ({
-      ...prev,
-      firstName: apiData.firstName,
-      lastName: apiData.lastName,
-      email: apiData.email,
-      phone: apiData.phone,
-    }));
+    const saved = localStorage.getItem("waiterProfile");
+    if (saved) {
+      setFormData(JSON.parse(saved));
+    } else {
+      // fallback: fetch from API
+      const fetchProfile = async () => {
+        try {
+          const res = await api.get("/auth/waiter-profile");
+          setFormData(res.data);
+        } catch (err) {
+          console.error("Error fetching profile:", err.message);
+        }
+      };
+      fetchProfile();
+    }
   }, []);
+
+  // 🔹 Save to localStorage whenever formData changes
+  useEffect(() => {
+    localStorage.setItem("waiterProfile", JSON.stringify(formData));
+  }, [formData]);
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
@@ -88,17 +92,38 @@ const ProfileForm = () => {
     return newErrors;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const newErrors = validate();
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+
     try {
-      await api.put(`/${role}/${userId}/profile`, profile);
-      alert("Profile updated successfully!");
+      const data = new FormData();
+      Object.keys(formData).forEach((key) => {
+        if (typeof formData[key] === "object" && formData[key] !== null && !(formData[key] instanceof File)) {
+          // stringify nested objects (nextOfKin, guarantor)
+          data.append(key, JSON.stringify(formData[key]));
+        } else if (formData[key]) {
+          data.append(key, formData[key]);
+        }
+      });
+
+      const res = await api.put("/auth/profile", data, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+
+      console.log(res.data);
+      setSuccessMsg("Profile updated successfully!");
+      localStorage.setItem("waiterProfile", JSON.stringify(formData)); // update local copy
     } catch (err) {
-      console.error(err);
+      console.error("Error updating profile:", err.message);
       alert("Error updating profile");
     }
   };
-
   return (
     <div className={styles.formContainer}>
       <h2 className="mb-4">Profile Update</h2>

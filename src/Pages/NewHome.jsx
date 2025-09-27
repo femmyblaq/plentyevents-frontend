@@ -48,21 +48,20 @@ const LandingPage = () => {
   return (
     <> 
     <Navbar /> 
-    <div className={`container-fluid bg-dark min-vh-100 position-relative ${styles.landing}`}>
-      {/* Overlay with CTA */}
+    {/* Overlay with CTA */}
       <div className={styles.overlay}>
         <h1 className={styles.ctaTitle}>Join PlentyEvents Today</h1>
         <p className={styles.ctaDesc}>
           Discover, hire, and connect with the best waiters, bartenders, waitresses, caterers, and cocktail experts. Whether you're hosting or serving, PlentyEvents is your gateway to seamless event experiences.
         </p>
         <div className={styles.ctaButtons}>
-          {/* <a href="/register" className={styles.ctaBtn}>Join as Vendor</a>
-          <a href="/register" className={styles.ctaBtnOutline}>Join as Waiter</a> */}
 
           <Link to="register"><button className={`${styles.ctaBtn} btn btn-success me-3`}>Join as Vendor</button></Link>
           <Link to="register"><button className={`${styles.ctaBtnOutline} btn btn-outline-success`}>Join as Waiter</button></Link>
         </div>
       </div>
+    <div className={`container-fluid bg-dark min-vh-100 position-relative ${styles.landing}`}>
+      
       {/* Masonry Images */}
       <Masonry
         breakpointCols={breakpointColumnsObj}
