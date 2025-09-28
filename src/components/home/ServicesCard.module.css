@@ -1,0 +1,81 @@
+.wrapper {
+  background: #f9f9f9;
+  min-height: 100vh;
+  padding: 50px 0;
+}
+.wrapper .top {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+}
+.wrapper button {
+      background: linear-gradient(45deg, #1d7702, #93e704);
+}
+.gradientHeading {
+  font-size: 2.5rem;
+  font-weight: bold;
+  background: linear-gradient(90deg, #93e704, #1d7702);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  font-family: 'Cal Sans', sans-serif;
+}
+
+.myMasonryGrid {
+  display: flex;
+  margin-left: -15px; /* gutter size offset */
+  width: auto;
+}
+
+.myMasonryGridColumn {
+  padding-left: 15px; /* gutter size */
+  background-clip: padding-box;
+}
+
+.userCard {
+  border-radius: 15px;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.userCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* ✅ Border colors */
+.vendorBorder:hover {
+  border: 2px solid #28a745 !important; /* green */
+}
+
+.waiterBorder:hover {
+  border: 2px solid #007bff !important; /* blue */
+}
+
+/* ✅ Role badges */
+.roleBadge {
+  font-size: 0.8rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  margin-top: 10px;
+  display: inline-block;
+}
+
+.vendorBadge {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.waiterBadge {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.cardImage {
+  height: 200px;
+  object-fit: cover;
+}
+
+

@@ -6,6 +6,8 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import Body from "../components/Body";
 import { Link } from "react-router-dom";
+import ServicesCard from "../components/home/ServicesCard";
+import StatsSection from "../components/home/StartsSection";
 
 const LandingPage = () => {
   const images = [
@@ -46,41 +48,56 @@ const LandingPage = () => {
   };
 
   return (
-    <> 
-    <Navbar /> 
-    {/* Overlay with CTA */}
-      <div className={styles.overlay}>
-        <h1 className={styles.ctaTitle}>Join PlentyEvents Today</h1>
-        <p className={styles.ctaDesc}>
-          Discover, hire, and connect with the best waiters, bartenders, waitresses, caterers, and cocktail experts. Whether you're hosting or serving, PlentyEvents is your gateway to seamless event experiences.
-        </p>
-        <div className={styles.ctaButtons}>
-
-          <Link to="register"><button className={`${styles.ctaBtn} btn btn-success me-3`}>Join as Vendor</button></Link>
-          <Link to="register"><button className={`${styles.ctaBtnOutline} btn btn-outline-success`}>Join as Waiter</button></Link>
-        </div>
-      </div>
-    <div className={`container-fluid bg-dark min-vh-100 position-relative ${styles.landing}`}>
-      
-      {/* Masonry Images */}
-      <Masonry
-        breakpointCols={breakpointColumnsObj}
-        className={`${styles.myMasonryGrid} p-0`}
-        columnClassName={styles.myMasonryGridColumn}
-      >
-        {images.map((img, index) => (
-          <div key={index} className="mb-4">
-            <img
-              src={img}
-              alt={`Landing ${index}`}
-              className="w-100 rounded-4 shadow-lg"
-            />
+    <>
+      <Navbar />
+      {/* Overlay with CTA */}
+      <div className={`container-fluid bg-dark min-vh-100 position-relative ${styles.landing}`}>
+        {/* Overlay with CTA */}
+        <div className={styles.overlay}>
+          <div className="wrap">
+            <h1 className={styles.ctaTitle}>Join PlentyEvents Today</h1>
+            <p className={styles.ctaDesc}>
+              Discover, hire, and connect with the best waiters, bartenders, waitresses,
+              caterers, and cocktail experts. Whether you're hosting or serving,
+              PlentyEvents is your gateway to seamless event experiences.
+            </p>
+            <div className={styles.ctaButtons}>
+              <Link to="register">
+                <button className={`${styles.ctaBtn} btn btn-success me-3`}>
+                  Join as Vendor
+                </button>
+              </Link>
+              <Link to="register">
+                <button className={`${styles.ctaBtnOutline} btn btn-outline-success`}>
+                  Join as Waiter
+                </button>
+              </Link>
+            </div>
           </div>
-        ))}
-      </Masonry>
-    </div>
-    <Body/>
-        <Footer />
+        </div>
+
+        {/* Masonry Images */}
+        <Masonry
+          breakpointCols={breakpointColumnsObj}
+          className={`${styles.myMasonryGrid} p-0`}
+          columnClassName={styles.myMasonryGridColumn}
+        >
+          {images.map((img, index) => (
+            <div key={index} className="mb-4">
+              <img
+                src={img}
+                alt={`Landing ${index}`}
+                className="w-100 rounded-4 shadow-lg"
+              />
+            </div>
+          ))}
+        </Masonry>
+      </div>
+
+      <Body />
+      <ServicesCard />
+      <StatsSection />
+      <Footer />
     </>
   );
 };

@@ -11,20 +11,23 @@
 }
 
 .overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  min-height: 100vh;
-  background: rgba(0,0,0,0.7);
-  z-index: 1111111;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 60px 16px 40px 16px;
+position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   text-align: center;
-  pointer-events: none; /* overlay does not block scrolling of images */
+  color: white;
+  z-index: 10;
+  padding: 2rem 3rem;
+  border-radius: 1rem;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* semi-transparent background */
+  background: rgba(0, 0, 0, 0.55); 
+  /* backdrop-filter: blur(2px); */
 }
 
 .ctaTitle {
@@ -41,6 +44,7 @@
   font-size: 1.25rem;
   margin-bottom: 32px;
   max-width: 600px;
+  margin: auto;
 }
 
 .ctaButtons {
@@ -48,6 +52,7 @@
   gap: 18px;
   flex-wrap: wrap;
   justify-content: center;
+  margin-top: 20px;
 }
 
 .ctaBtn, .ctaBtnOutline {
@@ -83,7 +88,7 @@
 }
 
 .ctaBtnOutline:hover {
-  background: #93e704;
+  background: #ebecea;
   color: #1d7702;
 }
 

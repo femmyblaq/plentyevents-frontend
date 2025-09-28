@@ -36,11 +36,11 @@ const Navbar = () => {
         <Link to="/services" style={{ textDecoration: "none", color: "white" }}>Services</Link>
         <Link to="/contact" style={{ textDecoration: "none", color: "white" }}>Contact</Link>
         <Link to="/faq" style={{ textDecoration: "none", color: "white" }}>FAQ</Link>
-        <button className="join-btn">
           <Link to="/register" style={{ textDecoration: "none", color: "black" }}>
+        <button className="join-btn">
             Join
-          </Link>
         </button>
+          </Link>
 
       </div>
 
