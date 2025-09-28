@@ -6,6 +6,7 @@ import { useSidebar } from '../../store/SidebarToggleContext.jsx'
 export default function Sidebar() {
   const {isOpen, toggleSidebar } = useSidebar();
   const [collapse, setCollapse] = useState(false);
+  console.log("isOpen: ", isOpen);
   const SidebarCollapse = () => {
     setCollapse(prev => !prev)
   }

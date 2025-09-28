@@ -21,20 +21,20 @@ export default function Dashboard() {
           <div className={style.navlinks}>
             <ul style={{listStyle: 'none', display: 'flex', justifyContent: 'space-between', fontSize: '1.2rem'}}>
               <NavLink to="/vendor/dashboard" end>
-                          {({isActive}) =><li className={isActive ? style.active: ""}><i className="ri-dashboard-2-line"></i> Dashboard</li>}
+                          {({isActive}) =><li className={isActive ? style.active: ""}><i className="fs-3 ri-dashboard-2-line"></i></li>}
                         </NavLink>
                         
                         <NavLink to="/vendor/dashboard/waiters">
-                          {({isActive}) =><li className={isActive ? style.active: ""}><i class="ri-team-fill"></i></li>}
+                          {({isActive}) =><li className={isActive ? style.active: ""}><i className="fs-3 ri-team-fill"></i></li>}
                           </NavLink>
                         <NavLink to="/vendor/dashboard/bookings">
-                          {({isActive}) =><li className={isActive ? style.active: ""}><i class="ri-pass-valid-fill"></i></li>}
+                          {({isActive}) =><li className={isActive ? style.active: ""}><i className="fs-3 ri-pass-valid-fill"></i></li>}
                           </NavLink>
                          <NavLink to="/vendor/dashboard/profile">
-                          {({isActive}) =><li className={isActive ? style.active: ""}><i class="ri-edit-circle-fill"></i></li>}
+                          {({isActive}) =><li className={isActive ? style.active: ""}><i className="fs-3 ri-edit-circle-fill"></i></li>}
                           </NavLink>
                          <NavLink to="/vendor/dashboard/need_help">
-                          {({isActive}) =><li className={isActive ? style.active: ""}><i className="ri-question-line"></i></li>}
+                          {({isActive}) =><li className={isActive ? style.active: ""}><i className="fs-3 ri-question-line"></i></li>}
                           </NavLink>
             </ul>
           </div>
